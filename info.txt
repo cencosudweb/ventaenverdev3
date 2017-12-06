@@ -1,0 +1,16 @@
+El programa se esta ejecutando...
+[restarDia]Exception:null
+[restarDia]Exception:null
+[restarDias]error: java.lang.NullPointerException
+[restarDias]error: java.lang.NullPointerException
+[iFechaIni] 0
+[iFechaFin] 0
+[iFechaIni2] null
+[iFechaFin2] null
+Pausa para Eliminar cuadratura_venta_verde sleep(60 seg)
+Pausa para Insertar FECHA_CREACION_ORDEN sleep(60 seg)
+[sb] SELECT 	SOLICITUDORIGINAL 	, N_ORDEN_DISTRIBU 	, FECHA_CREACION_ORDEN  	, CASE WHEN (select  EX14ERROR from CUADRATURA_OC_VTAV_JDA VTA_JDA where 1 = 1 and VTA_JDA.NUMDO = VTA_EOM.N_ORDEN_DISTRIBU and   VTA_JDA.Ex14error like '%La OC se cargo correctamente%' AND ROWNUM < 2 AND VTA_JDA.POFECE = ( select max( VTA_JDA2.POFECE )  from CUADRATURA_OC_VTAV_JDA VTA_JDA2 WHERE 1  = 1 AND VTA_JDA2.NUMDO = VTA_EOM.N_ORDEN_DISTRIBU)) IS NOT NULL THEN 'Log Envio Encontrado' ELSE 'Log Envio No Encontrado' END as LOGENCONTRADOENJDA 	, NVL( (SELECT VTA_JDA.PONUMB FROM cuadratura_oc_vtav_jda VTA_JDA WHERE 1 = 1 AND VTA_JDA.NUMDO = VTA_EOM.N_ORDEN_DISTRIBU AND ROWNUM < 2 AND VTA_JDA.POFECE = ( select max( VTA_JDA2.POFECE )  from cuadratura_oc_vtav_jda VTA_JDA2 WHERE 1  = 1 AND VTA_JDA2.NUMDO = VTA_EOM.N_ORDEN_DISTRIBU)),'OC JDA No Encontrado') AS PONUMB 	, NVL( (SELECT VTA_JDA.EX14ERROR FROM cuadratura_oc_vtav_jda VTA_JDA WHERE 1 = 1 AND VTA_JDA.NUMDO = VTA_EOM.N_ORDEN_DISTRIBU AND ROWNUM < 2 AND VTA_JDA.POFECE = ( select max( VTA_JDA2.POFECE )  from cuadratura_oc_vtav_jda VTA_JDA2 WHERE 1  = 1 AND VTA_JDA2.NUMDO = VTA_EOM.N_ORDEN_DISTRIBU)),'Log B2B No Encontrado') AS EX14ERROR   	, NVL( (SELECT VTA_JDA.DESPA FROM CUADRATURA_OC_VTAV_JDA VTA_JDA WHERE 1 = 1 AND VTA_JDA.NUMDO = VTA_EOM.N_ORDEN_DISTRIBU AND ROWNUM < 2 AND VTA_JDA.POFECE = ( select max( VTA_JDA2.POFECE )  from CUADRATURA_OC_VTAV_JDA VTA_JDA2 WHERE 1  = 1 AND VTA_JDA2.NUMDO = VTA_EOM.N_ORDEN_DISTRIBU)),'-') AS DESPA 	from  cuadratura_oc_vtav_eom VTA_EOM where 1 = 1 AND VTA_EOM.FECHA_CREACION_ORDEN >= 'null 00:00:00'  and VTA_EOM.FECHA_CREACION_ORDEN <= 'null 23:59:59' AND VTA_EOM.N_ORDEN_DISTRIBU NOT IN (SELECT VTA_JDA.NUMDO FROM cuadratura_oc_vtav_jda VTA_JDA WHERE 1 = 1  AND VTA_JDA.NUMDO  = VTA_EOM.N_ORDEN_DISTRIBU) 
+[Ini paso 6]
+Pausa para Eliminar CUADRATURA_JPDNOVRET sleep(7200 seg)
+Archivos creados.
+El programa finalizo.
